@@ -1,0 +1,16 @@
+<div class="comparacion">
+  <app-seleccion-emisor />
+  <div class="tarjeta-comparacion">
+    <h3>Montaje del receptor</h3>
+    <button (click)="mostrarReceptor.set(!mostrarReceptor())">
+      {{ mostrarReceptor() ? 'Desmontar' : 'Montar' }} receptor
+    </button>
+    <p class="explicacion">
+      Eleg&iacute; un &iacute;tem con el emisor y despu&eacute;s monta el receptor: recibe el
+      &uacute;ltimo valor al instante, aunque se haya suscripto tarde.
+    </p>
+  </div>
+  @if (mostrarReceptor()) {
+    <app-seleccion-receptor />
+  }
+</div>

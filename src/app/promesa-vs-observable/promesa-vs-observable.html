@@ -1,0 +1,20 @@
+<div class="comparacion">
+  <div class="tarjeta-comparacion">
+    <h3>Promesa</h3>
+    <button (click)="pedirConPromesa()">Pedir dato</button>
+    <ul>
+      @for (item of resultadoPromesa; track $index) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+  </div>
+  <div class="tarjeta-comparacion">
+    <h3>Observable</h3>
+    <button (click)="pedirConObservable()">Pedir datos</button>
+    <ul>
+      @for (item of resultadoObservable; track $index) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+  </div>
+</div>

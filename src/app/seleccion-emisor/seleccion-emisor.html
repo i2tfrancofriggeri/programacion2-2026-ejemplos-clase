@@ -1,0 +1,6 @@
+<div class="tarjeta-comparacion">
+  <h3>SeleccionEmisor</h3>
+  @for (item of items; track item) {
+    <button (click)="seleccionar(item)">{{ item }}</button>
+  }
+</div>
