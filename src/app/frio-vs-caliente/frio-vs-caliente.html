@@ -1,0 +1,26 @@
+<div class="comparacion">
+  <div class="tarjeta-comparacion">
+    <h3>Frío: interval(1000)</h3>
+    <p>Consumidor 1 (suscripto desde el inicio): <strong>{{ valorFrio1() ?? '—' }}</strong></p>
+    <p>Consumidor 2: <strong>{{ valorFrio2() ?? 'sin suscribir' }}</strong></p>
+    <button (click)="agregarConsumidorFrio()" [disabled]="valorFrio2() !== null">
+      Suscribir consumidor 2
+    </button>
+    <p class="explicacion">
+      Cada <code>subscribe()</code> dispara su propia cuenta desde 0, sin importar
+      cu&aacute;nto tiempo lleve corriendo el consumidor 1.
+    </p>
+  </div>
+  <div class="tarjeta-comparacion">
+    <h3>Caliente: interval(1000).pipe(share())</h3>
+    <p>Consumidor 1 (suscripto desde el inicio): <strong>{{ valorCaliente1() ?? '—' }}</strong></p>
+    <p>Consumidor 2: <strong>{{ valorCaliente2() ?? 'sin suscribir' }}</strong></p>
+    <button (click)="agregarConsumidorCaliente()" [disabled]="valorCaliente2() !== null">
+      Suscribir consumidor 2
+    </button>
+    <p class="explicacion">
+      Con <code>share()</code> todos los suscriptores comparten la misma ejecuci&oacute;n:
+      el consumidor 2 se sube al valor que ya est&aacute; corriendo, no arranca de 0.
+    </p>
+  </div>
+</div>

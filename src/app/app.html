@@ -12,6 +12,18 @@
 </section>
 
 <section>
+  <h2>1.2 Observables fríos y calientes</h2>
+  <p class="explicacion">
+    <code>interval(1000)</code> es un observable <strong>frío</strong>: cada
+    <code>subscribe()</code> arranca su propia cuenta desde 0, sin sincronizarse con
+    otros suscriptores. Con <code>share()</code> se "calienta": todos los suscriptores
+    pasan a compartir la misma ejecuci&oacute;n en curso. Sumá el consumidor 2 en cada
+    caso después de esperar unos segundos y comparalos.
+  </p>
+  <app-frio-vs-caliente />
+</section>
+
+<section>
   <h2>2. Observable vs. Promesa</h2>
   <p class="explicacion">
     La promesa resuelve un &uacute;nico valor, una sola vez. El observable puede emitir varios
