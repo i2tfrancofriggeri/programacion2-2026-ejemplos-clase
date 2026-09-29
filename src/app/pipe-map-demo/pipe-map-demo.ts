@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { interval, map, Subscription } from 'rxjs';
 
 interface NumeroProcesado {
@@ -14,8 +14,10 @@ interface NumeroProcesado {
   styleUrl: './pipe-map-demo.css',
 })
 export class PipeMapDemo {
-  datos: NumeroProcesado[] = [];
-  suscripto = false;
+  // Signals: el next del subscribe corre fuera de cualquier evento de template,
+  // así que en esta app zoneless (sin zone.js) solo un signal fuerza el repintado.
+  datos = signal<NumeroProcesado[]>([]);
+  suscripto = signal(false);
 
   private numero$ = interval(1000);
 
@@ -30,18 +32,18 @@ export class PipeMapDemo {
   private subscription: Subscription | null = null;
 
   iniciar() {
-    if (this.suscripto) return;
+    if (this.suscripto()) return;
 
-    this.suscripto = true;
-    this.datos = [];
+    this.suscripto.set(true);
+    this.datos.set([]);
     this.subscription = this.numeroProcesado$.subscribe({
-      next: (val) => this.datos.push(val),
+      next: (val) => this.datos.update((lista) => [...lista, val]),
     });
   }
 
   detener() {
     this.subscription?.unsubscribe();
     this.subscription = null;
-    this.suscripto = false;
+    this.suscripto.set(false);
   }
 }

@@ -1,7 +1,7 @@
 <div class="tarjeta-comparacion">
   <h3>numero$.pipe(map(&hellip;))</h3>
-  <button (click)="iniciar()" [disabled]="suscripto">Iniciar</button>
-  <button (click)="detener()" [disabled]="!suscripto">Detener</button>
+  <button (click)="iniciar()" [disabled]="suscripto()">Iniciar</button>
+  <button (click)="detener()" [disabled]="!suscripto()">Detener</button>
   <table>
     <thead>
       <tr>
@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (dato of datos; track dato.original) {
+      @for (dato of datos(); track dato.original) {
         <tr>
           <td>{{ dato.original }}</td>
           <td>{{ dato.duplicado }}</td>

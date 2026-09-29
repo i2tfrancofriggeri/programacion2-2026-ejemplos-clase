@@ -1,8 +1,8 @@
 <div class="tarjeta-comparacion">
   <h3>interval(1000).subscribe(&hellip;)</h3>
-  <p class="valor-grande">{{ valor ?? '—' }}</p>
-  <button (click)="encender()" [disabled]="suscripto">Encender (suscribirse)</button>
-  <button (click)="apagar()" [disabled]="!suscripto">Apagar (desuscribirse)</button>
+  <p class="valor-grande">{{ valor() ?? '—' }}</p>
+  <button (click)="encender()" [disabled]="suscripto()">Encender (suscribirse)</button>
+  <button (click)="apagar()" [disabled]="!suscripto()">Apagar (desuscribirse)</button>
   <p class="explicacion">
     Como la radio: el observable emite igual, est&eacute; encendida o no. Encender es suscribirse;
     apagar es desuscribirse. Si nunca se llama a <code>unsubscribe()</code>

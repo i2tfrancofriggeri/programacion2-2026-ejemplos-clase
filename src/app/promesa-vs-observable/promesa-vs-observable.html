@@ -3,7 +3,7 @@
     <h3>Promesa</h3>
     <button (click)="pedirConPromesa()">Pedir dato</button>
     <ul>
-      @for (item of resultadoPromesa; track $index) {
+      @for (item of resultadoPromesa(); track $index) {
         <li>{{ item }}</li>
       }
     </ul>
@@ -12,7 +12,7 @@
     <h3>Observable</h3>
     <button (click)="pedirConObservable()">Pedir datos</button>
     <ul>
-      @for (item of resultadoObservable; track $index) {
+      @for (item of resultadoObservable(); track $index) {
         <li>{{ item }}</li>
       }
     </ul>

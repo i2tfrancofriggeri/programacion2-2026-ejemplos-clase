@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, signal } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
@@ -8,26 +8,30 @@ import { interval, Subscription } from 'rxjs';
   styleUrl: './contador-observable.css',
 })
 export class ContadorObservable implements OnDestroy {
-  valor: number | null = null;
-  suscripto = false;
+  // Signals, no propiedades comunes: en una app zoneless (sin zone.js, como esta)
+  // solo un signal le avisa a Angular que hay que volver a renderizar la vista
+  // cuando el valor cambia por fuera de un evento de template (acá, en el
+  // callback de interval()).
+  valor = signal<number | null>(null);
+  suscripto = signal(false);
 
   // El observable existe (y podría estar emitiendo) más allá de que alguien se suscriba
   private contador$ = interval(1000);
   private subscription: Subscription | null = null;
 
   encender() {
-    if (this.suscripto) return;
+    if (this.suscripto()) return;
 
-    this.suscripto = true;
+    this.suscripto.set(true);
     this.subscription = this.contador$.subscribe({
-      next: (valor) => (this.valor = valor),
+      next: (valor) => this.valor.set(valor),
     });
   }
 
   apagar() {
     this.subscription?.unsubscribe();
     this.subscription = null;
-    this.suscripto = false;
+    this.suscripto.set(false);
   }
 
   ngOnDestroy() {
