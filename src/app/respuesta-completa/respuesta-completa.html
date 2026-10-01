@@ -1,0 +1,13 @@
+<div class="tarjeta-comparacion">
+  <h3>observe: 'response'</h3>
+  <button (click)="pedir()">Pedir respuesta completa</button>
+  @if (datos(); as d) {
+    <table>
+      <tbody>
+        <tr><th>status</th><td>{{ d.status }}</td></tr>
+        <tr><th>headers.get('content-type')</th><td>{{ d.contentType }}</td></tr>
+        <tr><th>body.results.length</th><td>{{ d.cantidad }}</td></tr>
+      </tbody>
+    </table>
+  }
+</div>

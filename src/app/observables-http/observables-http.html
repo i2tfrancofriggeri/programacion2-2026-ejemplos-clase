@@ -1,0 +1,13 @@
+<div class="tarjeta-comparacion">
+  <h3>Abrí la pestaña Network antes de probar</h3>
+  <button (click)="llamarSinSubscribe()">1. Sin subscribe()</button>
+  <button (click)="llamarDosVeces()">1. Dos subscribe()</button>
+  <button (click)="verComplete()">2. next + complete</button>
+  <button (click)="pedirYCancelar()">3. Pedir y cancelar</button>
+  <button (click)="log.set([])">Limpiar</button>
+  <ol class="log">
+    @for (linea of log(); track $index) {
+      <li>{{ linea }}</li>
+    }
+  </ol>
+</div>

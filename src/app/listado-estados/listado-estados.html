@@ -1,0 +1,20 @@
+<div class="tarjeta-comparacion">
+  <h3>Cargando / error / datos</h3>
+  <button (click)="cargar()">Recargar</button>
+  <button (click)="cargar(true)">Recargar con error</button>
+
+  @if (cargando()) {
+    <p>Cargando...</p>
+  } @else if (error()) {
+    <p class="error">{{ error() }}</p>
+    <button (click)="cargar()">Reintentar</button>
+  } @else {
+    <ul class="lista">
+      @for (pokemon of resultados(); track pokemon.name) {
+        <li>{{ pokemon.name }}</li>
+      } @empty {
+        <li>No hay resultados.</li>
+      }
+    </ul>
+  }
+</div>

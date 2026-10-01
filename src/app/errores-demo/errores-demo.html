@@ -1,0 +1,18 @@
+<div class="tarjeta-comparacion">
+  <h3>retry(2) + catchError</h3>
+  <button (click)="buscar('pikachu')">pikachu (200)</button>
+  <button (click)="buscar('pikachuu')">pikachuu (404)</button>
+  <p class="explicacion">
+    Para ver el mensaje de "sin conexión" (status 0), poné la pestaña Network en "Offline". En
+    Network se ven también los 2 reintentos de <code>retry(2)</code> antes de mostrar el error.
+  </p>
+
+  @if (cargando()) {
+    <p>Cargando...</p>
+  } @else if (error()) {
+    <p class="error">{{ error() }}</p>
+  } @else if (detalle(); as pokemon) {
+    <p>{{ pokemon.name }} — {{ pokemon.weight }} hg</p>
+    <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+  }
+</div>

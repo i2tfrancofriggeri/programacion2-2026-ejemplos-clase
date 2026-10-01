@@ -1,0 +1,27 @@
+<div class="tarjeta-comparacion">
+  <h3>JSONPlaceholder: GET, POST, PATCH y DELETE</h3>
+  <input [(ngModel)]="titulo" placeholder="Título de la publicación" />
+  <button (click)="agregar()" [disabled]="!titulo()">Agregar (POST)</button>
+  <button (click)="agregarSinSubscribe()" [disabled]="!titulo()">Agregar sin subscribe()</button>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>title</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (publicacion of publicaciones(); track $index) {
+        <tr>
+          <td>{{ publicacion.id }}</td>
+          <td>{{ publicacion.title }}</td>
+          <td>
+            <button (click)="marcarEditada(publicacion)">PATCH</button>
+            <button (click)="borrar(publicacion.id)">DELETE</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

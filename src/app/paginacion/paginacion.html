@@ -1,0 +1,11 @@
+<div class="tarjeta-comparacion">
+  <h3>params: limit={{ porPagina }} &amp; offset={{ desde() }}</h3>
+  <button (click)="anterior()" [disabled]="desde() === 0">Anterior</button>
+  <span>Página {{ paginaActual() }} de {{ totalPaginas() }}</span>
+  <button (click)="siguiente()" [disabled]="paginaActual() >= totalPaginas()">Siguiente</button>
+  <ul class="lista">
+    @for (pokemon of resultados(); track pokemon.name) {
+      <li>{{ pokemon.name }}</li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,11 @@
+<div class="tarjeta-comparacion">
+  <h3>debounceTime + switchMap</h3>
+  <input [(ngModel)]="texto" placeholder="Nombre exacto, ej: pikachu" />
+
+  @if (resultado(); as pokemon) {
+    <p>{{ pokemon.name }} — {{ pokemon.weight }} hg</p>
+    <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+  } @else if (texto()) {
+    <p>Sin resultados.</p>
+  }
+</div>

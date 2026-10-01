@@ -1,0 +1,11 @@
+<div class="tarjeta-comparacion">
+  <h3>Lista (emite la selección)</h3>
+  @for (pokemon of pokemones(); track pokemon.name) {
+    <button
+      [class.activo]="pokemon.name === seleccionado()"
+      (click)="pokemonService.seleccionarPokemon(pokemon.name)"
+    >
+      {{ pokemon.name }}
+    </button>
+  }
+</div>

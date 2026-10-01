@@ -1,0 +1,10 @@
+<div class="tarjeta-comparacion">
+  <h3>❌ subscribe anidado</h3>
+  <p>Seleccionado: <strong>{{ seleccionado() ?? '—' }}</strong></p>
+  @if (detalle(); as pokemon) {
+    <p [class.error]="pokemon.name !== seleccionado()">
+      Mostrando: <strong>{{ pokemon.name }}</strong>
+    </p>
+    <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+  }
+</div>
